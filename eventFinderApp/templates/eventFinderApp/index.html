@@ -1,18 +1,25 @@
 {% extends "base.html" %}
-
 {% block content %}
-
-<a href="{% url 'eventFinderApp:addevent' %}"> <button id="new-event">+ Create new event</button></a>
-    <h3>See what's on!</h3>
-    {% if events_list %}
-        {% for event in events_list %}
-            {% include "./detailsBox.html" with event=event %}
-            {% for category in event.category_set.all %}
-                {{category.name}}   
-            {% endfor %}
-        {% endfor %}
-    {% else %}
-        <p>No events are available.</p>
-    {% endif %}
-
+<div class="container">
+   <h2 class="title">Upcoming events</h2>
+   {% if events_list %}
+       {% for event in events_list %}
+           {% include "./detailsBox.html" with event=event %}
+       {% endfor %}
+</div>
+<div class="container">
+   {% else %}
+       <p>No current events are available.</p>
+   {% endif %}
+<br>
+   {% if user.is_authenticated %}
+   <h2 class="title">Can't find what you're looking for?</h2>
+   <a href="{% url 'eventFinderApp:addevent' %}"> <button id="new-event">+ Add an new event</button></a>
+   {% else %}
+   <h2 class="title">Can't find what you're looking for?</h2><br>
+   <p class="text-center">Please <a href="{% url 'login' %}"> login</a>  to add an event.</p>
+   <p class="text-center">Don't have an account? Sign up now!</p>
+   <a href="{% url 'users:register' %}"> <button id="new-event"> Sign up</button></a>
+</div>
+{% endif %}
 {% endblock %}

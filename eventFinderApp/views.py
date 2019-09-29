@@ -34,6 +34,8 @@ def addevent(request):
         # check whether it's valid:
         if eventform.is_valid():
             # save the data from the form
+            event = eventform.save(commit=False)
+            event.host = request.user
             eventform.save()
             # redirect to the event list
             return HttpResponseRedirect(reverse('eventFinderApp:index'))

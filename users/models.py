@@ -1,11 +1,12 @@
 from django.db import models
-
-# Create your models here.
-
 from django.contrib.auth.models import AbstractUser
 
-class CustomUser(AbstractUser):
-  # add additional fields in here
 
-  def __str__(self):
-    return self.email
+class CustomUser(AbstractUser):
+    username = models.CharField(max_length=50, unique=True)
+    first_name = models.CharField(max_length=50)
+    last_name = models.CharField(max_length=50)
+    email = models.EmailField()
+
+    def __str__(self):
+        return self.username

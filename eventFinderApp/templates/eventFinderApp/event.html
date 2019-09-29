@@ -3,8 +3,8 @@
 {% block content %}
 
 <h2>{{ event.title }}</h2>
-<p>{% for category in event.category_set.all %}
-    {{category.name}}   
+<p>{% for event in event.categories.all %}
+    {{event.name}}   
 {% endfor %}</p>
 <p>{{ event.location }}</p>
 <p>Starts at: {{ event.start_time }}</p>
