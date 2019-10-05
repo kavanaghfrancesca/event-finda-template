@@ -101,6 +101,8 @@ DATABASES = {
         'PASSWORD': '',
         'HOST': 'localhost',
         'PORT': '5432',
+    }
+}
 if 'RDS_HOSTNAME' in os.environ:
     DATABASES = {
         'default': {
