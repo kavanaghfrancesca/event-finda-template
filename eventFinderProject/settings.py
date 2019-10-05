@@ -92,6 +92,15 @@ WSGI_APPLICATION = 'eventFinderProject.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'event_finder', # you will need to create this db
+        'USER': '', # enter your user name here
+        'PASSWORD': '',
+        'HOST': 'localhost',
+        'PORT': '5432',
 if 'RDS_HOSTNAME' in os.environ:
     DATABASES = {
         'default': {
