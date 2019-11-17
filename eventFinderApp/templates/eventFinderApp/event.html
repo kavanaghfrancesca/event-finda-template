@@ -2,12 +2,24 @@
 
 {% block content %}
 
+<div class="container">
+
 <h2>{{ event.title }}</h2>
-<p>{% for event in event.categories.all %}
-    {{event.name}}   
-{% endfor %}</p>
-<p>{{ event.location }}</p>
-<p>Starts at: {{ event.start_time }}</p>
-<p>Ends at: {{ event.end_time }}</p>
+
+<h3>This event was added by: {{ event.host.username }}</h3>
+
+
+<ul>
+    <li><p>Location: {{ event.location }}</p></li>
+    <li><p>Venue: {{ event.venue }}</p></li>
+    <li><p>Date: {{ event.start_date }} - {{ event.end_date }}</p></li>
+    <li><p>Time: {{ event.start_time }} - {{ event.end_time }}</p></li>
+    <li><p>Best suited for: {% for event in event.categories.all %}</p></li>
+    <p>{{ event.name }}</p>
+    {% endfor %}
+</ul>
+
+</div>
+
 
 {% endblock %}

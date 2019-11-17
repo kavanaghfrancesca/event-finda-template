@@ -1,7 +1,23 @@
 {% extends "base.html" %}
 
 {% block content %}
+<div class="container">
+    <h2>Account details:</h2>
+    <p>Username: {{ user.username }}</p>
+    <p>Email: {{ user.email }}</p>
+    <br>
 
-You should put the user's account information and upcoming events here.
+    <h2>My events:</h2>
+    {% if events_list %}
+        {% for event in events_list %}
+            {% include "./detailsBox.html" with event=event %}
+        {% endfor %}
+    
+    {% else %}
+    <p>You have not created any events.</p>
+    <a href="{% url 'eventFinderApp:addevent' %}"> <button id="new-event">+ Add an new event</button></a>
+
+    {% endif %}
+</div>
 
 {% endblock %}
